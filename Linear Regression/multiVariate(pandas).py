@@ -33,7 +33,7 @@ df = pd.concat([df,dummies],axis=1) #data frame concatenation
 
 #now that we have inserted dummies to region, let's delete region column
 df = df.drop(['region'],axis=1)
-df = df.drop(['southwest'],axis=1)
+df = df.drop(['southwest'],axis=1) #one hot encoding (k-1) categories
 
 #let's convert df into an array
 data = df.to_numpy()
@@ -105,4 +105,4 @@ input_data_norm = np.append(1,data[132,:])
 predictedY_norm = np.matmul(np.transpose(m_norm),input_data_norm)
 print("Prdeicted Y normal equation = ",predictedY_norm) 
 #with 4 categories in onehot encoding actual = 11163.568  predicted = 30537.914
-#with 3 categories in onehot encoding actual = 11163.568  predicted = 13842.843
+#with 3 categories in onehot encoding actual = 11163.568  predicted = 13842.843 (when southwest dropped)
